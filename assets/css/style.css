@@ -9,7 +9,7 @@ body {
     color: white;
 }
 
-.restaurant-history, .restaurant-content {
+.restaurant-history, .restaurant-content, .weather-content {
     border: solid red;
     margin-right: 200px;
     margin-top: 15px;
