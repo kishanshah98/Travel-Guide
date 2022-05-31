@@ -3,6 +3,9 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     color: white;
+    font-family: 'Abel', sans-serif;
+    font-family: 'Macondo', cursive;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #textarea1 {
