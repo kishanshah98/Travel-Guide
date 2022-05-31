@@ -1,0 +1,16 @@
+body {
+    background-image: url("https://images.unsplash.com/photo-1527224538127-2104bb71c51b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+#textarea1 {
+    color: white;
+}
+
+.restaurant-history, .restaurant-content {
+    border: solid red;
+    margin-right: 200px;
+    margin-top: 15px;
+}

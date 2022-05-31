@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <title>Food & Weather</title>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-wrapper red accent-3">
+          <a href="#" class="brand-logo">Food & Weather</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#weather">Weather</a></li>
+            <li><a href="#restaurants">Restaurants</a></li>
+            <li><a href="about">About</a></li>
+          </ul>
+        </div>
+    </nav>
+      <!-- restaurants search and search history go here -->
+    <div class="row">
+        <aside class="input-field col s3 restaurant-history">
+            <span>Enter a city...</span>
+            <textarea id="textarea1" class="materialize-textarea"></textarea>
+            <label for="textarea1"></label>
+            <button class="btn waves-effect waves-light" type="submit" name="action">
+             <i class="material-icons right">Submit</i>
+            </button>
+            <button class="btn waves-effect waves-light" type="submit" name="action">
+             <i class="material-icons right">Clear</i>
+            </button>
+            <div id="city-list"></div>
+        </aside>
+        <!-- restaurant content goes here -->
+        <article class="col s5 restaurant-content">
+            <h3>Restaurant Content</h3>
+           
+        </article>
+    </div>
+
+
+<script src="./assets/js/script.js"></script>
+</body>
+</html>
