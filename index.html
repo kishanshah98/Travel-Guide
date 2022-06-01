@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Macondo&family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <title>Food & Weather</title>
 </head>
@@ -17,30 +21,48 @@
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="#weather">Weather</a></li>
             <li><a href="#restaurants">Restaurants</a></li>
-            <li><a href="about">About</a></li>
+            <li><a href="#contributers">Contributers</a></li>
           </ul>
         </div>
     </nav>
-      <!-- restaurants search and search history go here -->
-    <div class="row">
-        <aside class="input-field col s3 restaurant-history">
-            <span>Enter a city...</span>
-            <textarea id="textarea1" class="materialize-textarea"></textarea>
-            <label for="textarea1"></label>
-            <button class="btn waves-effect waves-light" type="submit" name="action">
-             <i class="material-icons right">Submit</i>
-            </button>
-            <button class="btn waves-effect waves-light" type="submit" name="action">
-             <i class="material-icons right">Clear</i>
-            </button>
-            <div id="city-list"></div>
-        </aside>
-        <!-- restaurant content goes here -->
-        <article class="col s5 restaurant-content">
-            <h3>Restaurant Content</h3>
-           
-        </article>
-    </div>
+    
+    <main>
+            <!-- search input and search history go here -->
+        <div class="row">
+            <aside class="input-field col s2 restaurant-history">
+                <span>Enter a city...</span>
+                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                <label for="textarea1"></label>
+                <button class="btn waves-effect waves-light" type="submit" name="action">
+                <i class="material-icons">search</i>
+                </button>
+                <button class="btn waves-effect waves-light" type="submit" name="action">
+                <i class="material-icons">delete</i>
+                </button>
+                <div id="city-list"></div>
+            </aside>
+            <!-- restaurant content goes here -->
+            <article class="col s5 restaurant-content" id="restaurants">
+                <h3>Restaurant Content</h3>
+            </article>
+            <!-- weather content goes here -->
+            <article class="col s5 weather-content" id="weather">
+                <h3>Weather Content</h3>
+            </article>
+
+        </div>
+
+    </main>
+    <!-- contributers go here -->
+    <footer class="page-footer red accent-3">
+        <div class="container">
+            <h5 id="contributers">Contributers:</h5>
+            <a class="grey-text text-lighten-4 right" href="https://github.com/micbrwn">Michael Brown</a>
+            <a class="grey-text text-lighten-4 right" href="https://github.com/AntDeMatteo">Anthony Dematteo</a>
+            <a class="grey-text text-lighten-4 right" href="https://github.com/clogerie92">Carl Logerie</a>
+            <a class="grey-text text-lighten-4 right" href="https://github.com/kishanshah98">Kishan Shah</a>
+        </div>
+    </footer>    
 
 
 <script src="./assets/js/script.js"></script>
