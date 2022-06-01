@@ -29,35 +29,45 @@ $.ajax({
 
 $(document).ready(function() {
    // global variables
-   var searchBtn = $(".searchBtn");
-   var deleteBtn = $(".deleteBtn");
+   var searchBtn = $("#searchBtn");
+   var deleteBtn = $("#deleteBtn");
    var textArea = $("#textarea1");
-   var historyList = $(".history-list");
-   var currentWeatherDiv = $("#current-weather");
-   var forecastDiv = $("#forecast");
+   var cityList = $("#city-list");
+   var restaurantsDiv = $("#restaurants");
+   var weatherDiv = $("#weather");
    // starting local storage
    var searchHistory = JSON.parse(window.localStorage.getItem("search-history")) || [];
 
    function getGeoLocation () {
        var apiKey = "b0786aaf2595b4e2380f01ed8f03a7a4";
-       var url = "http://api.openweathermap.org/geo/1.0/direct?q=" + userInput + "&limit=1&appid=" + apiKey;
+       var searchInput = textArea.val().trim();
+       var url = "http://api.openweathermap.org/geo/1.0/direct?q=" + searchInput + "&limit=1&appid=" + apiKey;
+       console.log(searchInput);
+       $.ajax({
+         url: url,
+         method: "GET"
+       }).then(function(response) {
+          console.log(response);
+          var lat = response[0].lat;
+          var lon = response[0].lon;
+          console.log(lat, lon);
+          getCurrentWeather(lat, lon);
+       });
+       
    }
 
-   function getCurrentWeather(userInput) {
+   searchBtn.on("click", getGeoLocation);
+
+   function getCurrentWeather(lat, lon) {
        var apiKey = "b0786aaf2595b4e2380f01ed8f03a7a4";
-       var queryUrl = "https://api.openweathermap.org/data/2.5/onecall?=" + userInput + "lat={lat}&lon={lon}&exclude={part}&appid=" + apiKey + "&units=imperical";
+       var queryUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial";
        $.ajax({
            url: queryUrl,
            method: "GET"
        }).then(function(response) {
            console.log(response);
        });
-       console.log("Search button clicked!!!");
    }
 
-   searchBtn.on("click", getCurrentWeather);
-
-
-
-
+   // searchBtn.on("click", getCurrentWeather);
 });
