@@ -72,14 +72,18 @@ $(document).ready(function() {
            method: "GET"
        }).then(function(response) {
            console.log("Current weather: ", response);
-           var cardContent = $("<div>").addClass("card-content");
-           var temp = $("<p>").text("Current temperature (F): " + response.current.temp);
-           var humidity = $("<p>").text("Current humidity: " + response.current.humidity);
-           var windSpeed = $("<p>").text("Current wind speed (mph): " + response.current.wind_speed);
            weatherCard.append(title);
-           cardContent.append(temp, humidity, windSpeed);
-           weatherCard.append(cardContent);
-           weatherDiv.append(weatherCard);
+           for (var i = 0; i < 5; i++) {
+                var cardContent = $("<div>").addClass("card-content");
+                var temp = $("<p>").text("Current temperature (F): " + response.daily[i].temp.day);
+                var humidity = $("<p>").text("Current humidity: " + response.daily[i].humidity);
+                var windSpeed = $("<p>").text("Current wind speed (mph): " + response.daily[i].wind_speed);
+                cardContent.append(temp, humidity, windSpeed);
+                weatherCard.append(cardContent);
+                weatherDiv.append(weatherCard);
+           }
+           
+           
         //    console.log(response.current.weather[0].icon);
            
            
