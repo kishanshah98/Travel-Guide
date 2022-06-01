@@ -1,19 +1,4 @@
-// var apiKey = "GmxPIEUb9z8zNRhQnxIXbycTDjTogloh";
-
-// $.ajax({
-//     type:"GET",
-//     url:"https://app.ticketmaster.com/discovery/v2/events.json?size=1&apikey=GmxPIEUb9z8zNRhQnxIXbycTDjTogloh",
-//     async:true,
-//     dataType: "json",
-//     success: function(json) {
-//                 console.log(json);
-//                 // Parse the response.
-//                 // Do other things.
-//              }
-//   });
-
-
-// yelp api
+// Yelp API
 var apiKey = "rFlPqBV_66EyE8ZnW2gPlA1uKfHNFf8b9h-4yEQZuOdqSis4_VOBnA-jWORLf2oc_-DBUAdDK6tw3J6_rKR7P9ZJv-pFi76s9G5vPw72ppObfaA9YngRrix74DaWYnYx";
 var queryUrl = "https://api.yelp.com/v3/businesses/{id}/reviews";
 
@@ -23,12 +8,12 @@ $.ajax({
 }).then(function(response) {
    console.log(response);
 });
+
 // ==================================================================================================================================================
 
-// openweather api
-
+// OpenWeather API
 $(document).ready(function() {
-   // global variables
+   // Global variables created
    var searchBtn = $("#searchBtn");
    var deleteBtn = $("#deleteBtn");
    var textArea = $("#textarea1");
@@ -38,6 +23,7 @@ $(document).ready(function() {
    // starting local storage
    var searchHistory = JSON.parse(window.localStorage.getItem("search-history")) || [];
 
+   // Retrieves the longitude and latitude required for the getCurrentWeather function
    function getGeoLocation () {
        var apiKey = "b0786aaf2595b4e2380f01ed8f03a7a4";
        var searchInput = textArea.val().trim();
@@ -53,11 +39,12 @@ $(document).ready(function() {
           console.log(lat, lon);
           getCurrentWeather(lat, lon);
        });
-       
    }
 
+   // Triggers getGeoLocation function to start once the search button is clicked
    searchBtn.on("click", getGeoLocation);
 
+   // Gets the weather forecast using longitude and latitude from getGeoLocation
    function getCurrentWeather(lat, lon) {
        var apiKey = "b0786aaf2595b4e2380f01ed8f03a7a4";
        var queryUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial";
@@ -68,6 +55,5 @@ $(document).ready(function() {
            console.log(response);
        });
    }
-
-   // searchBtn.on("click", getCurrentWeather);
 });
+
