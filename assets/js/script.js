@@ -62,6 +62,7 @@ $(document).ready(function() {
 
    // Triggers getGeoLocation function to start once the search button is clicked
    searchBtn.on("click", getGeoLocation);
+   searchBtn.on("click", historyList);
 
    // Gets the weather forecast using longitude and latitude from getGeoLocation
    function getCurrentWeather(lat, lon) {
@@ -88,6 +89,12 @@ $(document).ready(function() {
            
            
        });
+   }
+
+   function historyList() {
+       var searchInput = textArea.val().trim();
+       var button = $("<button>").addClass("btn").text(searchInput);
+       cityList.append(button);
    }
 });
 
