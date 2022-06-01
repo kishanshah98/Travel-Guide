@@ -22,6 +22,9 @@ $(document).ready(function() {
    var cityList = $("#city-list");
    var restaurantsDiv = $("#restaurants");
    var weatherDiv = $("#weather");
+   var weatherCard = $("<div>").addClass("card");
+   
+   var title = $("<span>").addClass("card-title");
    // starting local storage
    var searchHistory = JSON.parse(window.localStorage.getItem("search-history")) || [];
 
@@ -35,17 +38,23 @@ $(document).ready(function() {
          url: url,
          method: "GET"
        }).then(function(response) {
-        //   console.log(response);
+          console.log("Geolocation: ", response);
           var lat = response[0].lat;
           var lon = response[0].lon;
+        //   var weatherIcon = response.current.weather[0].icon;
           console.log(lat, lon);
           var name = response[0].name
-          var weatherCard = $("<div>").addClass("card");
+          title.text(response[0].name);
+          
+         
           // temp, humidity, windspeed, icons
-          var title = $("<h3>").addClass("card-image").text(response[0].name);
-          weatherCard.append(title);
-        //   weatherCard.text(name);
-        //   console.log(name);
+        //   var cardIcon = $("<img>").attr("src", "https://openweathermap.org/img/w/" + response.current.weather[0].icon + ".png");
+        //   weatherCard.append(cardIcon);
+          
+          
+        //   weatherCard.append(cardIcon);
+
+          console.log(name);
           weatherDiv.append(weatherCard);
           getCurrentWeather(lat, lon);
        });
@@ -62,7 +71,17 @@ $(document).ready(function() {
            url: queryUrl,
            method: "GET"
        }).then(function(response) {
-           console.log(response);
+           console.log("Current weather: ", response);
+           var cardContent = $("<div>").addClass("card-content");
+           var temp = $("<p>").text("Current temperature (F): " + response.current.temp);
+           var humidity = $("<p>").text("Current humidity: " + response.current.humidity);
+           var windSpeed = $("<p>").text("Current wind speed (mph): " + response.current.wind_speed);
+           weatherCard.append(title);
+           cardContent.append(temp, humidity, windSpeed);
+           weatherCard.append(cardContent);
+           weatherDiv.append(weatherCard);
+        //    console.log(response.current.weather[0].icon);
+           
            
        });
    }
