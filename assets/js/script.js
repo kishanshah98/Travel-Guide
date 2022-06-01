@@ -5,7 +5,7 @@ var queryUrl = "https://api.yelp.com/v3/businesses/{id}/reviews";
 $.ajax({
    url: queryUrl,
    method: "GET"
-}).then(function(response) {
+}).then(function (response) {
    console.log(response);
    var businessId = response.id;
    console.log(businessId);
@@ -14,7 +14,7 @@ $.ajax({
 // ==================================================================================================================================================
 
 // OpenWeather API
-$(document).ready(function() {
+$(document).ready(function () {
    // Global variables created
    var searchBtn = $("#searchBtn");
    var deleteBtn = $("#deleteBtn");
@@ -26,21 +26,21 @@ $(document).ready(function() {
    var searchHistory = JSON.parse(window.localStorage.getItem("search-history")) || [];
 
    // Retrieves the longitude and latitude required for the getCurrentWeather function
-   function getGeoLocation () {
-       var apiKey = "b0786aaf2595b4e2380f01ed8f03a7a4";
-       var searchInput = textArea.val().trim();
-       var url = "http://api.openweathermap.org/geo/1.0/direct?q=" + searchInput + "&limit=1&appid=" + apiKey;
-       console.log(searchInput);
-       $.ajax({
+   function getGeoLocation() {
+      var apiKey = "b0786aaf2595b4e2380f01ed8f03a7a4";
+      var searchInput = textArea.val().trim();
+      var url = "http://api.openweathermap.org/geo/1.0/direct?q=" + searchInput + "&limit=1&appid=" + apiKey;
+      console.log(searchInput);
+      $.ajax({
          url: url,
          method: "GET"
-       }).then(function(response) {
-          console.log(response);
-          var lat = response[0].lat;
-          var lon = response[0].lon;
-          console.log(lat, lon);
-          getCurrentWeather(lat, lon);
-       });
+      }).then(function (response) {
+         console.log(response);
+         var lat = response[0].lat;
+         var lon = response[0].lon;
+         console.log(lat, lon);
+         getCurrentWeather(lat, lon);
+      });
    }
 
    // Triggers getGeoLocation function to start once the search button is clicked
@@ -48,19 +48,14 @@ $(document).ready(function() {
 
    // Gets the weather forecast using longitude and latitude from getGeoLocation
    function getCurrentWeather(lat, lon) {
-       var apiKey = "b0786aaf2595b4e2380f01ed8f03a7a4";
-       var queryUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial";
-       $.ajax({
-           url: queryUrl,
-           method: "GET"
-       }).then(function(response) {
-           console.log(response);
-           var weatherCard = $("<div>").addClass("card");
-           var name = response[0].name
-           weatherCard.text(name);
-           console.log(name);
-           weatherDiv.append(weatherCard);
-       });
+      var apiKey = "b0786aaf2595b4e2380f01ed8f03a7a4";
+      var queryUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial";
+      $.ajax({
+         url: queryUrl,
+         method: "GET"
+      }).then(function (response) {
+         console.log(response);
+         var weatherCard = $("<div>").addClass("card");
+      });
    }
 });
-
