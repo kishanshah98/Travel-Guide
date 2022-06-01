@@ -48,23 +48,26 @@ $(document).ready(function() {
          method: "GET"
        }).then(function(response) {
           console.log(response);
+          var lat = response[0].lat;
+          var lon = response[0].lon;
+          console.log(lat, lon);
+          getCurrentWeather(lat, lon);
        });
-       console.log("search button clicked!!!");
+       
    }
 
    searchBtn.on("click", getGeoLocation);
 
-   // function getCurrentWeather(userInput) {
-   //     var apiKey = "b0786aaf2595b4e2380f01ed8f03a7a4";
-   //     var queryUrl = "https://api.openweathermap.org/data/2.5/onecall?=" + userInput + "lat={lat}&lon={lon}&exclude={part}&appid=" + apiKey + "&units=imperical";
-   //     $.ajax({
-   //         url: queryUrl,
-   //         method: "GET"
-   //     }).then(function(response) {
-   //         console.log(response);
-   //     });
-   //     console.log("Search button clicked!!!");
-   // }
+   function getCurrentWeather(lat, lon) {
+       var apiKey = "b0786aaf2595b4e2380f01ed8f03a7a4";
+       var queryUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial";
+       $.ajax({
+           url: queryUrl,
+           method: "GET"
+       }).then(function(response) {
+           console.log(response);
+       });
+   }
 
    // searchBtn.on("click", getCurrentWeather);
 });
