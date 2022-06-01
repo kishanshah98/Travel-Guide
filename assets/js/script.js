@@ -7,6 +7,8 @@ $.ajax({
    method: "GET"
 }).then(function(response) {
    console.log(response);
+   var businessId = response.id;
+   console.log(businessId);
 });
 
 // ==================================================================================================================================================
@@ -53,6 +55,11 @@ $(document).ready(function() {
            method: "GET"
        }).then(function(response) {
            console.log(response);
+           var weatherCard = $("<div>").addClass("card");
+           var name = response[0].name
+           weatherCard.text(name);
+           console.log(name);
+           weatherDiv.append(weatherCard);
        });
    }
 });
