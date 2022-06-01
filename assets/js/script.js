@@ -1,20 +1,5 @@
-// var apiKey = "GmxPIEUb9z8zNRhQnxIXbycTDjTogloh";
-
-// $.ajax({
-//     type:"GET",
-//     url:"https://app.ticketmaster.com/discovery/v2/events.json?size=1&apikey=GmxPIEUb9z8zNRhQnxIXbycTDjTogloh",
-//     async:true,
-//     dataType: "json",
-//     success: function(json) {
-//                 console.log(json);
-//                 // Parse the response.
-//                 // Do other things.
-//              }
-//   });
-
-
-// yelp api
-var apiKey = "rFlPqBV_66EyE8ZnW2gPlA1uKfHNFf8b9h-4yEQZuOdqSis4_VOBnA-jWORLf2oc_-DBUAdDK6tw3J6_rKR7P9ZJv-pFi76s9G5vPw72ppObfaA9YngRrix74DaWYnYx";
+$(document).ready(function() {
+   // yelp api
 var queryUrl = "https://api.yelp.com/v3/businesses/{id}/reviews";
 
 $.ajax({
@@ -22,12 +7,12 @@ $.ajax({
    method: "GET"
 }).then(function(response) {
    console.log(response);
+   var businessId = response.id;
+   console.log(businessId);
 });
-// ==================================================================================================================================================
+//====================================================================================================
+   // openweather api
 
-// openweather api
-
-$(document).ready(function() {
    // global variables
    var searchBtn = $("#searchBtn");
    var deleteBtn = $("#deleteBtn");
@@ -56,8 +41,6 @@ $(document).ready(function() {
        
    }
 
-   searchBtn.on("click", getGeoLocation);
-
    function getCurrentWeather(lat, lon) {
        var apiKey = "b0786aaf2595b4e2380f01ed8f03a7a4";
        var queryUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial";
@@ -66,8 +49,13 @@ $(document).ready(function() {
            method: "GET"
        }).then(function(response) {
            console.log(response);
+           var weatherCard = $("<div>").addClass("card");
+           var name = response[0].name
+           weatherCard.text(name);
+           console.log(name);
+           weatherDiv.append(weatherCard);
        });
    }
 
-   // searchBtn.on("click", getCurrentWeather);
+   searchBtn.on("click", getGeoLocation);
 });
