@@ -1,20 +1,20 @@
-// Yelp API
-var apiKey = "rFlPqBV_66EyE8ZnW2gPlA1uKfHNFf8b9h-4yEQZuOdqSis4_VOBnA-jWORLf2oc_-DBUAdDK6tw3J6_rKR7P9ZJv-pFi76s9G5vPw72ppObfaA9YngRrix74DaWYnYx";
-var queryUrl = "https://api.yelp.com/v3/businesses/{id}/reviews";
+$(document).ready(function() {
+    // Yelp API
+    var apiKey = "rFlPqBV_66EyE8ZnW2gPlA1uKfHNFf8b9h-4yEQZuOdqSis4_VOBnA-jWORLf2oc_-DBUAdDK6tw3J6_rKR7P9ZJv-pFi76s9G5vPw72ppObfaA9YngRrix74DaWYnYx";
+    var queryUrl = "https://api.yelp.com/v3/businesses/{id}/reviews";
 
-$.ajax({
-   url: queryUrl,
-   method: "GET"
-}).then(function(response) {
-   console.log(response);
-   var businessId = response.id;
-   console.log(businessId);
-});
+    $.ajax({
+        url: queryUrl,
+        method: "GET"
+        }).then(function(response) {
+        console.log(response);
+        var businessId = response.id;
+        console.log(businessId);
+    });
 
 // ==================================================================================================================================================
+   // OpenWeather API
 
-// OpenWeather API
-$(document).ready(function() {
    // Global variables created
    var searchBtn = $("#searchBtn");
    var deleteBtn = $("#deleteBtn");
@@ -22,6 +22,9 @@ $(document).ready(function() {
    var cityList = $("#city-list");
    var restaurantsDiv = $("#restaurants");
    var weatherDiv = $("#weather");
+   var weatherCard = $("<div>").addClass("card");
+   
+   var title = $("<span>").addClass("card-title");
    // starting local storage
    var searchHistory = JSON.parse(window.localStorage.getItem("search-history")) || [];
 
@@ -35,16 +38,31 @@ $(document).ready(function() {
          url: url,
          method: "GET"
        }).then(function(response) {
-          console.log(response);
+          console.log("Geolocation: ", response);
           var lat = response[0].lat;
           var lon = response[0].lon;
+        //   var weatherIcon = response.current.weather[0].icon;
           console.log(lat, lon);
+          var name = response[0].name
+          title.text(response[0].name);
+          
+         
+          // temp, humidity, windspeed, icons
+        //   var cardIcon = $("<img>").attr("src", "https://openweathermap.org/img/w/" + response.current.weather[0].icon + ".png");
+        //   weatherCard.append(cardIcon);
+          
+          
+        //   weatherCard.append(cardIcon);
+
+          console.log(name);
+          weatherDiv.append(weatherCard);
           getCurrentWeather(lat, lon);
        });
    }
 
    // Triggers getGeoLocation function to start once the search button is clicked
    searchBtn.on("click", getGeoLocation);
+   searchBtn.on("click", historyList);
 
    // Gets the weather forecast using longitude and latitude from getGeoLocation
    function getCurrentWeather(lat, lon) {
@@ -54,13 +72,29 @@ $(document).ready(function() {
            url: queryUrl,
            method: "GET"
        }).then(function(response) {
-           console.log(response);
-           var weatherCard = $("<div>").addClass("card");
-           var name = response[0].name
-           weatherCard.text(name);
-           console.log(name);
-           weatherDiv.append(weatherCard);
+           console.log("Current weather: ", response);
+           weatherCard.append(title);
+           for (var i = 0; i < 5; i++) {
+                var cardContent = $("<div>").addClass("card-content");
+                var temp = $("<p>").text("Current temperature (F): " + response.daily[i].temp.day);
+                var humidity = $("<p>").text("Current humidity: " + response.daily[i].humidity);
+                var windSpeed = $("<p>").text("Current wind speed (mph): " + response.daily[i].wind_speed);
+                cardContent.append(temp, humidity, windSpeed);
+                weatherCard.append(cardContent);
+                weatherDiv.append(weatherCard);
+           }
+           
+           
+        //    console.log(response.current.weather[0].icon);
+           
+           
        });
+   }
+
+   function historyList() {
+       var searchInput = textArea.val().trim();
+       var button = $("<button>").addClass("btn").text(searchInput);
+       cityList.append(button);
    }
 });
 
