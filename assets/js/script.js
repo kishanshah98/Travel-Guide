@@ -1,20 +1,20 @@
-// Yelp API
-var apiKey = "rFlPqBV_66EyE8ZnW2gPlA1uKfHNFf8b9h-4yEQZuOdqSis4_VOBnA-jWORLf2oc_-DBUAdDK6tw3J6_rKR7P9ZJv-pFi76s9G5vPw72ppObfaA9YngRrix74DaWYnYx";
-var queryUrl = "https://api.yelp.com/v3/businesses/{id}/reviews";
+$(document).ready(function() {
+    // Yelp API
+    var apiKey = "rFlPqBV_66EyE8ZnW2gPlA1uKfHNFf8b9h-4yEQZuOdqSis4_VOBnA-jWORLf2oc_-DBUAdDK6tw3J6_rKR7P9ZJv-pFi76s9G5vPw72ppObfaA9YngRrix74DaWYnYx";
+    var queryUrl = "https://api.yelp.com/v3/businesses/{id}/reviews";
 
-$.ajax({
-   url: queryUrl,
-   method: "GET"
-}).then(function(response) {
-   console.log(response);
-   var businessId = response.id;
-   console.log(businessId);
-});
+    $.ajax({
+        url: queryUrl,
+        method: "GET"
+        }).then(function(response) {
+        console.log(response);
+        var businessId = response.id;
+        console.log(businessId);
+    });
 
 // ==================================================================================================================================================
+   // OpenWeather API
 
-// OpenWeather API
-$(document).ready(function() {
    // Global variables created
    var searchBtn = $("#searchBtn");
    var deleteBtn = $("#deleteBtn");
@@ -35,10 +35,18 @@ $(document).ready(function() {
          url: url,
          method: "GET"
        }).then(function(response) {
-          console.log(response);
+        //   console.log(response);
           var lat = response[0].lat;
           var lon = response[0].lon;
           console.log(lat, lon);
+          var name = response[0].name
+          var weatherCard = $("<div>").addClass("card");
+          // temp, humidity, windspeed, icons
+          var title = $("<h3>").addClass("card-image").text(response[0].name);
+          weatherCard.append(title);
+        //   weatherCard.text(name);
+        //   console.log(name);
+          weatherDiv.append(weatherCard);
           getCurrentWeather(lat, lon);
        });
    }
@@ -55,11 +63,7 @@ $(document).ready(function() {
            method: "GET"
        }).then(function(response) {
            console.log(response);
-           var weatherCard = $("<div>").addClass("card");
-           var name = response[0].name
-           weatherCard.text(name);
-           console.log(name);
-           weatherDiv.append(weatherCard);
+           
        });
    }
 });
