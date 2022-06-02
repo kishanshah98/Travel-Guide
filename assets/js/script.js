@@ -55,6 +55,10 @@ $(document).ready(function() {
         //   weatherCard.append(cardIcon);
         
           console.log(name);
+          weatherCard.empty();
+          weatherDiv.empty();
+          console.log("Weather card:", weatherCard);
+          console.log("Weather div:", weatherDiv);
           weatherDiv.append(weatherCard);
           getCurrentWeather(lat, lon);
        });
