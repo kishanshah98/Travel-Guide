@@ -53,7 +53,7 @@ $(document).ready(function() {
           
           
         //   weatherCard.append(cardIcon);
-
+        
           console.log(name);
           weatherDiv.append(weatherCard);
           getCurrentWeather(lat, lon);
@@ -76,9 +76,9 @@ $(document).ready(function() {
            weatherCard.append(title);
            for (var i = 0; i < 5; i++) {
                 var cardContent = $("<div>").addClass("card-content");
-                var temp = $("<p>").text("Current temperature (F): " + response.daily[i].temp.day);
-                var humidity = $("<p>").text("Current humidity: " + response.daily[i].humidity);
-                var windSpeed = $("<p>").text("Current wind speed (mph): " + response.daily[i].wind_speed);
+                var temp = $("<p>").text("Temp (F): " + response.daily[i].temp.day);
+                var humidity = $("<p>").text("Humidity: " + response.daily[i].humidity);
+                var windSpeed = $("<p>").text("Wind Speed (mph): " + response.daily[i].wind_speed);
                 cardContent.append(temp, humidity, windSpeed);
                 weatherCard.append(cardContent);
                 weatherDiv.append(weatherCard);
