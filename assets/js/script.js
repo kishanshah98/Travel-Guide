@@ -1,16 +1,18 @@
 $(document).ready(function() {
     // Yelp API
-    var apiKey = "rFlPqBV_66EyE8ZnW2gPlA1uKfHNFf8b9h-4yEQZuOdqSis4_VOBnA-jWORLf2oc_-DBUAdDK6tw3J6_rKR7P9ZJv-pFi76s9G5vPw72ppObfaA9YngRrix74DaWYnYx";
-    var queryUrl = "https://api.yelp.com/v3/businesses/{id}/reviews";
+    function getBrews(name) {
+        var queryUrl = "https://api.openbrewerydb.org/breweries?by_city=" + name + "&per_page=8";
+        $.ajax({
+            url: queryUrl,
+            method: "GET"
+            }).then(function(response) {
+            console.log("Brews reviews!!!", response);
+            console.log(name);
+            // name, phone, address, website
+            var brewCard = $("<div>").addClass("card");
 
-    $.ajax({
-        url: queryUrl,
-        method: "GET"
-        }).then(function(response) {
-        console.log(response);
-        var businessId = response.id;
-        console.log(businessId);
-    });
+        });
+    }
 
 // ==================================================================================================================================================
    // OpenWeather API
@@ -22,8 +24,8 @@ $(document).ready(function() {
    var cityList = $("#city-list");
    var restaurantsDiv = $("#restaurants");
    var weatherDiv = $("#weather");
+   var weatherContent = $("#weather-content");
    var weatherCard = $("<div>").addClass("card");
-   
    var title = $("<span>").addClass("card-title");
    // starting local storage
    var searchHistory = JSON.parse(window.localStorage.getItem("search-history")) || [];
@@ -61,15 +63,13 @@ $(document).ready(function() {
           console.log("Weather div:", weatherDiv);
           weatherDiv.append(weatherCard);
           getCurrentWeather(lat, lon);
+          getBrews(name);
+          historyList();
        });
    }
 
-   // Triggers getGeoLocation function to start once the search button is clicked
-   searchBtn.on("click", getGeoLocation);
-   searchBtn.on("click", historyList);
-
    // Gets the weather forecast using longitude and latitude from getGeoLocation
-   function getCurrentWeather(lat, lon) {
+   function getCurrentWeather(lat, lon, name) {
        var apiKey = "b0786aaf2595b4e2380f01ed8f03a7a4";
        var queryUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial";
        $.ajax({
@@ -83,18 +83,13 @@ $(document).ready(function() {
                 var dt = response.daily[i].dt;
                 var date = $("<p>").text(new Date(dt * 1000).toDateString());
                 var icon = $("<img>").attr("src", "http://openweathermap.org/img/wn/" + response.daily[i].weather[0].icon + ".png");
-                var temp = $("<p>").text("Temp (F): " + response.daily[i].temp.day);
-                var humidity = $("<p>").text("Humidity: " + response.daily[i].humidity);
-                var windSpeed = $("<p>").text("Wind Speed (MPH): " + response.daily[i].wind_speed);
+                var temp = $("<p>").text("Temp (F): " + Math.floor(response.daily[i].temp.day));
+                var humidity = $("<p>").text("Humidity: " + Math.floor(response.daily[i].humidity));
+                var windSpeed = $("<p>").text("Wind Speed (MPH): " + Math.floor(response.daily[i].wind_speed));
                 cardContent.append(icon, date, temp, humidity, windSpeed);
                 weatherCard.append(cardContent);
                 weatherDiv.append(weatherCard);
            }
-           
-           
-        //    console.log(response.current.weather[0].icon);
-           
-           
        });
    }
 
@@ -103,4 +98,7 @@ $(document).ready(function() {
        var button = $("<button>").addClass("btn").text(searchInput);
        cityList.append(button);
    }
+
+   searchBtn.on("click", getGeoLocation);
+   
 });
