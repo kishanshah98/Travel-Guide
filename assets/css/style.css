@@ -4,8 +4,8 @@ body
     background-size: cover;
     background-repeat: no-repeat;
     color: black;
-    font-family: 'Abel', sans-serif;
-    font-family: 'Macondo', cursive;
+    /* font-family: 'Abel', sans-serif; */
+    /* font-family: 'Macondo', cursive; */
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -59,15 +59,30 @@ body
       margin: -18px;
   }
 
-  nav ul li {
-      color: brown;
-  }
+  /* nav li {
+    font-family: 'Tangerine', cursive;
+    font-weight: bolder;
+    font-size: large;
+  } */
+
+#restaurant-heading {
+    font-family: 'Tangerine', cursive;
+    font-size: 85px;
+    font-weight: bolder;
+}
+
+#weather-heading {
+    font-family: 'Tangerine', cursive;
+    font-size: 85px;
+    font-weight: bolder;
+}
 
   .weather-content {
       text-align: center; 
       /* background-color: #ffffff9d; */
       color: #01579b;
   }
+
 
   .input-field {
       width: 300px;
