@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    // Yelp API
+    // openbrewery API
     function getBrews(name) {
         var queryUrl = "https://api.openbrewerydb.org/breweries?by_city=" + name + "&per_page=8";
         $.ajax({
@@ -9,8 +9,19 @@ $(document).ready(function() {
             console.log("Brews reviews!!!", response);
             console.log(name);
             // name, phone, address, website
-            var brewCard = $("<div>").addClass("card");
+            for (var i = 0; i < response.length; i++) {
+                var brewCard = $("<div>").addClass("card");
+                var brewContent = $("<div>").addClass("card-content");
+                var brewName = $("<p>").text("Brewery: " + response[i].name);
+                var brewPhone = $("<p>").text("Phone: " + response[i].phone);
+                var brewAddress = $("<p>").text("Address: " + response[i].street);
+                var brewSite = $("<p>").text("Website: " + response[i].website_url);
 
+                brewContent.append(brewName, brewAddress, brewPhone, brewSite);
+                brewCard.append(brewContent);
+                breweriesDiv.append(brewCard);
+            }    
+               
         });
     }
 
@@ -22,7 +33,7 @@ $(document).ready(function() {
    var deleteBtn = $("#deleteBtn");
    var textArea = $("#textarea1");
    var cityList = $("#city-list");
-   var restaurantsDiv = $("#restaurants");
+   var breweriesDiv = $("#breweries");
    var weatherDiv = $("#weather");
    var weatherContent = $("#weather-content");
    var weatherCard = $("<div>").addClass("card");
@@ -59,6 +70,7 @@ $(document).ready(function() {
           console.log(name);
           weatherCard.empty();
           weatherDiv.empty();
+          breweriesDiv.empty();
           console.log("Weather card:", weatherCard);
           console.log("Weather div:", weatherDiv);
           weatherDiv.append(weatherCard);
