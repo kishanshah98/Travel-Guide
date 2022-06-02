@@ -70,6 +70,7 @@ $(document).ready(function() {
           console.log(name);
           weatherCard.empty();
           weatherDiv.empty();
+          breweriesDiv.empty();
           console.log("Weather card:", weatherCard);
           console.log("Weather div:", weatherDiv);
           weatherDiv.append(weatherCard);
