@@ -72,16 +72,16 @@ $(document).ready(function() {
            weatherCard.append(title);
            for (var i = 0; i < 5; i++) {
             var cardContent = $("<div>").addClass("card-content");
+            var dt = response.daily[i].dt;
+            var date = $("<p>").text(new Date(dt * 1000).toDateString());
+            var icon = $("<img>").attr("src", "http://openweathermap.org/img/wn/" + response.daily[i].weather[0].icon + ".png");
             var temp = $("<p>").text("Current temperature (F): " + response.daily[i].temp.day);
             var humidity = $("<p>").text("Current humidity: " + response.daily[i].humidity);
             var windSpeed = $("<p>").text("Current wind speed (mph): " + response.daily[i].wind_speed);
-            cardContent.append(temp, humidity, windSpeed);
+            cardContent.append(icon, date, temp, humidity, windSpeed);
             weatherCard.append(cardContent);
             weatherDiv.append(weatherCard);
            }
-           
-           
-        //    console.log(response.current.weather[0].icon);
        });
    }
 
