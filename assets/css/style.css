@@ -4,8 +4,8 @@ body
     background-size: cover;
     background-repeat: no-repeat;
     color: black;
-    font-family: 'Abel', sans-serif;
-    font-family: 'Macondo', cursive;
+    /* font-family: 'Abel', sans-serif; */
+    /* font-family: 'Macondo', cursive; */
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -39,13 +39,14 @@ body
 
  nav h1 {
     display: inline-block;
-    margin: 15px 0px;
+    margin: 17px 35px;
   
     animation: bounce; /* referring directly to the animation's @keyframe declaration */
     animation-duration: 4s;
     /* color: darkblue; */
     /* font-family: 'Lobster', cursive; */
-    font-family: 'Pacifico', cursive;
+    font-family: 'Tangerine', cursive;
+    font-weight:bolder;
     /* font-size: 75px; */
     /* font-family: 'Macondo', cursive; */
   }
@@ -54,18 +55,33 @@ body
   } */
 
   nav h1 i {
-      margin: -15px;
+      margin: -18px;
   }
 
-  nav ul li {
-      color: brown;
-  }
+  /* nav li {
+    font-family: 'Tangerine', cursive;
+    font-weight: bolder;
+    font-size: large;
+  } */
+
+#restaurant-heading {
+    font-family: 'Tangerine', cursive;
+    font-size: 85px;
+    font-weight: bolder;
+}
+
+#weather-heading {
+    font-family: 'Tangerine', cursive;
+    font-size: 85px;
+    font-weight: bolder;
+}
 
   .weather-content {
       text-align: center; 
       /* background-color: #ffffff9d; */
       color: #01579b;
   }
+
 
   .input-field {
       width: 300px;
@@ -76,7 +92,7 @@ body
   }
 
 .card-title {
-
+    background-color: #cfd8dc9d;
 }
 
 .card {
