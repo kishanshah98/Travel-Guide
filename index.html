@@ -2,78 +2,104 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Abel&family=Macondo&family=Montserrat:wght@700&display=swap"
-    rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <title>Shine N' Dine</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Macondo&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css" integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Shine N' Dine</title>
 </head>
 
 <body>
-  <header>
+   
+    
     <nav>
-      <div class="nav-wrapper red accent-3">
-        <a href="#" class="brand-logo">Shine N' Dine</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="#weather">Weather</a></li>
-          <li><a href="#restaurants">Restaurants</a></li>
-          <li><a href="#contributers">Contributers</a></li>
-        </ul>
-      </div>
+        <div class="nav-wrapper #cfd8dc blue-grey lighten-4">
+        <h1 class="animate__lightSpeedInLeft brand-logo center light-blue-text text-darken-4">Shine N' Dine<i class="fa-solid fa-utensils"></i></h1>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a class="light-blue-text text-darken-4 right" href="#weather">Weather</a></li>
+            <li><a class="light-blue-text text-darken-4 right" href="#restaurants">Restaurants</a></li>
+            <li><a class="light-blue-text text-darken-4 right" href="#contributers">Contributers</a></li>
+          </ul>
+        </div>
     </nav>
-  </header>
-  <main>
+    
+    <main>
+    
+        <div class="row">
+            
+            <aside class="input-field col s2 restaurant-history">
+                <!-- search input goes here -->
+                <span>Enter a city (city, state format)...</span>
+                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                <label for="textarea1"></label>
+                <button class="btn waves-effect waves-light" type="submit" name="action" id="searchBtn">
+                <i class="material-icons">search</i>
+                </button>
+                <button class="btn waves-effect waves-light" type="submit" name="action" id="deleteBtn">
+                <i class="material-icons">delete</i>
+                </button>
+                <!-- search history goes here -->
+                <div id="city-list"></div>
+            </aside>
+
+            <!-- restaurant content goes here -->
+            <article class="col s5 restaurant-content" id="restaurants">
+                <h3>Restaurant Content</h3>
+            </article>
+
+            <!-- weather content goes here -->
 
     <div class="row">
 
-      <aside class="input-field col s2 restaurant-history">
-        <!-- search input goes here -->
-        <span>Enter a city (city, state format)...</span>
-        <textarea id="textarea1" class="materialize-textarea"></textarea>
-        <label for="textarea1"></label>
-        <button class="btn waves-effect waves-light" type="submit" name="action" id="searchBtn">
-          <i class="material-icons">search</i>
-        </button>
-        <button class="btn waves-effect waves-light" type="submit" name="action" id="deleteBtn">
-          <i class="material-icons">delete</i>
-        </button>
-        <!-- search history goes here -->
-        <div id="city-list"></div>
-      </aside>
+        <section class="row">
+            <article class="col s12 weather-content" id="weather">
+                <h3>Weather Content</h3>
+            </article>
+        </section>
 
-      </div>
-      <!-- restaurant content goes here -->
-      <article class="col s5 restaurant-content" id="restaurants">
-        <h3>Restaurant Content</h3>
-      </article>
-      <!-- weather content goes here -->
-      <article class="col s5 weather-content" id="weather">
-        <h3>Weather Content</h3>
-      </article>
-
-    </div>
-
-  </main>
-  <!-- contributers go here -->
-  <footer class="page-footer red accent-3">
-    <div class="container">
-      <h5 id="contributers">Contributers:</h5>
-      <a class="grey-text text-lighten-4 right" href="https://github.com/micbrwn">Michael Brown</a>
-      <a class="grey-text text-lighten-4 right" href="https://github.com/AntDeMatteo">Anthony Dematteo</a>
-      <a class="grey-text text-lighten-4 right" href="https://github.com/clogerie92">Carl Logerie</a>
-      <a class="grey-text text-lighten-4 right" href="https://github.com/kishanshah98">Kishan Shah</a>
-    </div>
-  </footer>
+    </main>
+    <!-- contributers go here -->
+    <!-- <footer class="page-footer red accent-3">
+        <div class="container">
+            <h5 id="contributers">Contributers:</h5>
+            <li><a class="grey-text text-lighten-4 right" href="https://github.com/micbrwn">Michael Brown</a></li>
+            <li><a class="grey-text text-lighten-4 right" href="https://github.com/AntDeMatteo">Anthony Dematteo</a></li>
+            <li><a class="grey-text text-lighten-4 right" href="https://github.com/clogerie92">Carl Logerie</a></li>
+            <li><a class="grey-text text-lighten-4 right" href="https://github.com/kishanshah98">Kishan Shah</a></li>
+        </div>
+    </footer>  -->
 
 
-  <script src="./assets/js/script.js"></script>
+    <footer>
+        <nav>
+            <div class="nav-wrapper #cfd8dc blue-grey lighten-4">
+            <a href="#" class="light-blue-text text-darken-4 brand-logo">Contributers:</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a class="light-blue-text text-darken-4 right" href="https://github.com/micbrwn">Michael Brown</a></li>
+                <li><a class="light-blue-text text-darken-4 right" href="https://github.com/AntDeMatteo">Anthony Dematteo</a></li>
+                <li><a class="light-blue-text text-darken-4 right" href="https://github.com/clogerie92">Carl Logerie</a></li>
+                <li><a class="light-blue-text text-darken-4 right" href="https://github.com/kishanshah98">Kishan Shah</a></li>
+            </ul>
+            </div>
+        </nav>   
+    </footer>
+
+<script src="https://kit.fontawesome.com/de01171047.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script src="./assets/js/script.js"></script>
 </body>
-
 </html>
+
