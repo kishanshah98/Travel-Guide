@@ -61,6 +61,7 @@ $(document).ready(function() {
           weatherDiv.append(weatherCard);
           getCurrentWeather(lat, lon);
           getRestaurantReviews(lat, lon);
+          historyList();
        });
    }
 
@@ -79,9 +80,9 @@ $(document).ready(function() {
                 var dt = response.daily[i].dt;
                 var date = $("<p>").text(new Date(dt * 1000).toDateString());
                 var icon = $("<img>").attr("src", "http://openweathermap.org/img/wn/" + response.daily[i].weather[0].icon + ".png");
-                var temp = $("<p>").text("Temp (F): " + response.daily[i].temp.day);
-                var humidity = $("<p>").text("Humidity: " + response.daily[i].humidity);
-                var windSpeed = $("<p>").text("Wind Speed (MPH): " + response.daily[i].wind_speed);
+                var temp = $("<p>").text("Temp (F): " + Math.floor(response.daily[i].temp.day));
+                var humidity = $("<p>").text("Humidity: " + Math.floor(response.daily[i].humidity));
+                var windSpeed = $("<p>").text("Wind Speed (MPH): " + Math.floor(response.daily[i].wind_speed));
                 cardContent.append(icon, date, temp, humidity, windSpeed);
                 weatherCard.append(cardContent);
                 weatherDiv.append(weatherCard);
@@ -94,4 +95,7 @@ $(document).ready(function() {
        var button = $("<button>").addClass("btn").text(searchInput);
        cityList.append(button);
    }
+
+   searchBtn.on("click", getGeoLocation);
+   
 });
