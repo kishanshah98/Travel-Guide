@@ -80,10 +80,13 @@ $(document).ready(function() {
            weatherCard.append(title);
            for (var i = 0; i < 5; i++) {
                 var cardContent = $("<div>").addClass("card-content");
+                var dt = response.daily[i].dt;
+                var date = $("<p>").text(new Date(dt * 1000).toDateString());
+                var icon = $("<img>").attr("src", "http://openweathermap.org/img/wn/" + response.daily[i].weather[0].icon + ".png");
                 var temp = $("<p>").text("Temp (F): " + response.daily[i].temp.day);
                 var humidity = $("<p>").text("Humidity: " + response.daily[i].humidity);
-                var windSpeed = $("<p>").text("Wind Speed (mph): " + response.daily[i].wind_speed);
-                cardContent.append(temp, humidity, windSpeed);
+                var windSpeed = $("<p>").text("Wind Speed (MPH): " + response.daily[i].wind_speed);
+                cardContent.append(icon, date, temp, humidity, windSpeed);
                 weatherCard.append(cardContent);
                 weatherDiv.append(weatherCard);
            }
