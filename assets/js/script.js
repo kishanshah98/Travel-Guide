@@ -1,16 +1,13 @@
 $(document).ready(function() {
     // Yelp API
-    var apiKey = "rFlPqBV_66EyE8ZnW2gPlA1uKfHNFf8b9h-4yEQZuOdqSis4_VOBnA-jWORLf2oc_-DBUAdDK6tw3J6_rKR7P9ZJv-pFi76s9G5vPw72ppObfaA9YngRrix74DaWYnYx";
-    var queryUrl = "https://api.yelp.com/v3/businesses/{id}/reviews";
-
-    function getRestaurantReviews() {
+    function getRestaurantReviews(lat, lon, name) {
+        var apiKey = "rFlPqBV_66EyE8ZnW2gPlA1uKfHNFf8b9h-4yEQZuOdqSis4_VOBnA-jWORLf2oc_-DBUAdDK6tw3J6_rKR7P9ZJv-pFi76s9G5vPw72ppObfaA9YngRrix74DaWYnYx";
+        var queryUrl = "https://api.yelp.com/v3/businesses/&latitude=" + lat + "&longitude=" + lon + apiKey;
         $.ajax({
             url: queryUrl,
             method: "GET"
             }).then(function(response) {
-            console.log(response);
-            var businessId = response.id;
-            console.log(businessId);
+            console.log("Yelp reviews!!!", response);
         });
     }
 
@@ -24,8 +21,8 @@ $(document).ready(function() {
    var cityList = $("#city-list");
    var restaurantsDiv = $("#restaurants");
    var weatherDiv = $("#weather");
+   var weatherContent = $("#weather-content");
    var weatherCard = $("<div>").addClass("card");
-   
    var title = $("<span>").addClass("card-title");
    // starting local storage
    var searchHistory = JSON.parse(window.localStorage.getItem("search-history")) || [];
@@ -59,6 +56,7 @@ $(document).ready(function() {
           console.log(name);
           weatherDiv.append(weatherCard);
           getCurrentWeather(lat, lon);
+          getRestaurantReviews(lat, lon);
        });
    }
 
@@ -73,17 +71,13 @@ $(document).ready(function() {
            console.log("Current weather: ", response);
            weatherCard.append(title);
            for (var i = 0; i < 5; i++) {
-                var cardContent = $("<div>").addClass("card-content");
-                var cityName = $("<h3>").addClass("card-title").text(name);
-                var dt = response.daily[i].dt;
-                var icon = $("<img>").attr("src", "http://openweathermap.org/img/wn/" + response.daily[i].weather[i].icon + ".png"); 
-                var date = $("<p>").text(new Date(dt * 1000).toDateString());
-                var temp = $("<p>").text("Current temperature (F): " + Math.floor(response.daily[i].temp.day));
-                var humidity = $("<p>").text("Current humidity: " + Math.floor(response.daily[i].humidity));
-                var windSpeed = $("<p>").text("Current wind speed (mph): " + Math.floor(response.daily[i].wind_speed));
-                cardContent.append(icon, date, name, temp, humidity, windSpeed);
-                weatherCard.append(cardContent);
-                weatherDiv.append(weatherCard);
+            var cardContent = $("<div>").addClass("card-content");
+            var temp = $("<p>").text("Current temperature (F): " + response.daily[i].temp.day);
+            var humidity = $("<p>").text("Current humidity: " + response.daily[i].humidity);
+            var windSpeed = $("<p>").text("Current wind speed (mph): " + response.daily[i].wind_speed);
+            cardContent.append(temp, humidity, windSpeed);
+            weatherCard.append(cardContent);
+            weatherDiv.append(weatherCard);
            }
            
            
@@ -100,6 +94,7 @@ $(document).ready(function() {
    // Triggers getGeoLocation function to start once the search button is clicked
    searchBtn.on("click", getGeoLocation);
    searchBtn.on("click", historyList);
+   searchBtn.on("click", getRestaurantReviews);
 
 });
 
