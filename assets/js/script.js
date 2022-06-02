@@ -29,12 +29,12 @@ $(document).ready(function() {
    var searchHistory = JSON.parse(window.localStorage.getItem("search-history")) || [];
 
    // Retrieves the longitude and latitude required for the getCurrentWeather function
-   function getGeoLocation () {
-       var apiKey = "b0786aaf2595b4e2380f01ed8f03a7a4";
-       var searchInput = textArea.val().trim();
-       var url = "http://api.openweathermap.org/geo/1.0/direct?q=" + searchInput + "&limit=1&appid=" + apiKey;
-       console.log(searchInput);
-       $.ajax({
+   function getGeoLocation() {
+      var apiKey = "b0786aaf2595b4e2380f01ed8f03a7a4";
+      var searchInput = textArea.val().trim();
+      var url = "http://api.openweathermap.org/geo/1.0/direct?q=" + searchInput + "&limit=1&appid=" + apiKey;
+      console.log(searchInput);
+      $.ajax({
          url: url,
          method: "GET"
        }).then(function(response) {
@@ -53,8 +53,12 @@ $(document).ready(function() {
           
           
         //   weatherCard.append(cardIcon);
-
+        
           console.log(name);
+          weatherCard.empty();
+          weatherDiv.empty();
+          console.log("Weather card:", weatherCard);
+          console.log("Weather div:", weatherDiv);
           weatherDiv.append(weatherCard);
           getCurrentWeather(lat, lon);
        });
@@ -76,10 +80,13 @@ $(document).ready(function() {
            weatherCard.append(title);
            for (var i = 0; i < 5; i++) {
                 var cardContent = $("<div>").addClass("card-content");
+                var dt = response.daily[i].dt;
+                var date = $("<p>").text(new Date(dt * 1000).toDateString());
+                var icon = $("<img>").attr("src", "http://openweathermap.org/img/wn/" + response.daily[i].weather[0].icon + ".png");
                 var temp = $("<p>").text("Temp (F): " + response.daily[i].temp.day);
                 var humidity = $("<p>").text("Humidity: " + response.daily[i].humidity);
-                var windSpeed = $("<p>").text("Wind speed (mph): " + response.daily[i].wind_speed);
-                cardContent.append(temp, humidity, windSpeed);
+                var windSpeed = $("<p>").text("Wind Speed (MPH): " + response.daily[i].wind_speed);
+                cardContent.append(icon, date, temp, humidity, windSpeed);
                 weatherCard.append(cardContent);
                 weatherDiv.append(weatherCard);
            }
@@ -97,4 +104,3 @@ $(document).ready(function() {
        cityList.append(button);
    }
 });
-
