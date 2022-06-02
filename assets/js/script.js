@@ -1,7 +1,7 @@
 $(document).ready(function() {
     // openbrewery API
     function getBrews(name) {
-        var queryUrl = "https://api.openbrewerydb.org/breweries?by_city=" + name + "&per_page=8";
+        var queryUrl = "https://api.openbrewerydb.org/breweries?by_city=" + name + "&per_page=5";
         $.ajax({
             url: queryUrl,
             method: "GET"
