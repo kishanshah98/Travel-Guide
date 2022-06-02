@@ -1,13 +1,16 @@
 $(document).ready(function() {
     // Yelp API
-    function getRestaurantReviews(lat, lon, name) {
-        var apiKey = "rFlPqBV_66EyE8ZnW2gPlA1uKfHNFf8b9h-4yEQZuOdqSis4_VOBnA-jWORLf2oc_-DBUAdDK6tw3J6_rKR7P9ZJv-pFi76s9G5vPw72ppObfaA9YngRrix74DaWYnYx";
-        var queryUrl = "https://api.yelp.com/v3/businesses/&latitude=" + lat + "&longitude=" + lon + apiKey;
+    function getBrews(name) {
+        var queryUrl = "https://api.openbrewerydb.org/breweries?by_city=" + name + "&per_page=8";
         $.ajax({
             url: queryUrl,
             method: "GET"
             }).then(function(response) {
-            console.log("Yelp reviews!!!", response);
+            console.log("Brews reviews!!!", response);
+            console.log(name);
+            // name, phone, address, website
+            var brewCard = $("<div>").addClass("card");
+
         });
     }
 
@@ -60,7 +63,7 @@ $(document).ready(function() {
           console.log("Weather div:", weatherDiv);
           weatherDiv.append(weatherCard);
           getCurrentWeather(lat, lon);
-          getRestaurantReviews(lat, lon);
+          getBrews(name);
           historyList();
        });
    }
