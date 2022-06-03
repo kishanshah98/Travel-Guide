@@ -8,7 +8,7 @@ $(document).ready(function () {
     var breweriesDiv = $("#breweries");
     var weatherDiv = $("#weather");
     var weatherCard = $("<div>").addClass("card");
-    var title = $("<span>").addClass("card-title");
+    var title = $("<h3>").addClass("weather-title");
 
     // Openbrewery API function
     function getBrews(name) {
@@ -19,7 +19,7 @@ $(document).ready(function () {
         }).then(function (response) {
 
             for (var i = 0; i < response.length; i++) {
-                var brewCard = $("<div>").addClass("card");
+                var brewCard = $("<div>").addClass("brew-card");
                 var brewContent = $("<div>").addClass("card-content");
                 var brewName = $("<p>").text("Brewery: " + response[i].name);
 
@@ -78,7 +78,7 @@ $(document).ready(function () {
             url: queryUrl,
             method: "GET"
         }).then(function (response) {
-            weatherCard.append(title);
+            weatherDiv.append(title);
             for (var i = 0; i < 5; i++) {
                 var cardContent = $("<div>").addClass("card-content");
                 var dt = response.daily[i].dt;
@@ -87,6 +87,7 @@ $(document).ready(function () {
                 var temp = $("<p>").text("Temp (F): " + Math.floor(response.daily[i].temp.day));
                 var humidity = $("<p>").text("Humidity: " + Math.floor(response.daily[i].humidity));
                 var windSpeed = $("<p>").text("Wind Speed (MPH): " + Math.floor(response.daily[i].wind_speed));
+                cardContent.attr('style', "border-radius:20px;");
                 cardContent.append(icon, date, temp, humidity, windSpeed);
                 weatherCard.append(cardContent);
                 weatherDiv.append(weatherCard);
