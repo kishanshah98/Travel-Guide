@@ -13,9 +13,24 @@ $(document).ready(function() {
                 var brewCard = $("<div>").addClass("card");
                 var brewContent = $("<div>").addClass("card-content");
                 var brewName = $("<p>").text("Brewery: " + response[i].name);
-                var brewPhone = $("<p>").text("Phone: " + response[i].phone);
-                var brewAddress = $("<p>").text("Address: " + response[i].street);
-                var brewSite = $("<p>").text("Website: " + response[i].website_url);
+                
+                if (response[i].phone == null) {
+                    var brewPhone = $("<p>").text("Phone: N/A");
+                } else {
+                    var brewPhone = $("<p>").text("Phone: " + response[i].phone);
+                }
+
+                if (response[i].street == null) {
+                    var brewAddress = $("<p>").text("Address: N/A");
+                } else {
+                    var brewAddress = $("<p>").text("Address: " + response[i].street);
+                }
+                
+                if (response[i].website_url == null) {
+                    var brewSite = $("<p>").text("Website: N/A");
+                } else {
+                    var brewSite = $("<p>").text("Website: " + response[i].website_url);
+                }
 
                 brewContent.append(brewName, brewAddress, brewPhone, brewSite);
                 brewCard.append(brewContent);
