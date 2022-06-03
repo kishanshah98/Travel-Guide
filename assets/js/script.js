@@ -69,15 +69,7 @@ $(document).ready(function () {
    var searchHistory = JSON.parse(window.localStorage.getItem("search-history")) || [];
 
     // Gets the weather forecast using longitude and latitude from getGeoLocation and displays it on browser
-    function getCurrentWeather(lat, lon) {
-        var apiKey = "b0786aaf2595b4e2380f01ed8f03a7a4";
-        var queryUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial";
-        $.ajax({
-            url: queryUrl,
-            method: "GET"
-        }).then(function (response) {
-            weatherDiv.append(title);
-            for (var i = 0; i < 5; i++) {
+
    // Retrieves the longitude and latitude required for the getCurrentWeather function
    function getGeoLocation() {
       var apiKey = "b0786aaf2595b4e2380f01ed8f03a7a4";
