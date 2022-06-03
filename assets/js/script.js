@@ -1,16 +1,4 @@
-$(document).ready(function () {
-
-    // Global variables created
-    var searchBtn = $("#searchBtn");
-    var deleteBtn = $("#deleteBtn");
-    var textArea = $("#textarea1");
-    var cityList = $("#city-list");
-    var breweriesDiv = $("#breweries");
-    var weatherDiv = $("#weather");
-    var weatherCard = $("<div>").addClass("card");
-    var title = $("<h3>").addClass("weather-title");
-
-    // Openbrewery API function
+$(document).ready(function() {
     // openbrewery API
     function getBrews(name) {
         var queryUrl = "https://api.openbrewerydb.org/breweries?by_city=" + name + "&per_page=5";
@@ -67,8 +55,6 @@ $(document).ready(function () {
    var title = $("<span>").addClass("card-title");
    // starting local storage
    var searchHistory = JSON.parse(window.localStorage.getItem("search-history")) || [];
-
-    // Gets the weather forecast using longitude and latitude from getGeoLocation and displays it on browser
 
    // Retrieves the longitude and latitude required for the getCurrentWeather function
    function getGeoLocation() {
