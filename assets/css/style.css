@@ -1,6 +1,6 @@
 body
  {
-    background-image: url("https://images.unsplash.com/photo-1583908701673-4cb5f290b548?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80");
+    /* background-image: url("https://images.unsplash.com/photo-1612528443702-f6741f70a049?ixlib=rb-1.2.1&ixid=MnwxM[…]90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1760&q=80"); */
     background-size: cover;
     background-repeat: no-repeat;
     color: black;
@@ -39,13 +39,14 @@ body
 
  nav h1 {
     display: inline-block;
-    margin: 17px 35px;
+    margin: 15px 35px;
   
     animation: bounce; /* referring directly to the animation's @keyframe declaration */
     animation-duration: 4s;
     /* color: darkblue; */
     /* font-family: 'Lobster', cursive; */
-    font-family: 'Tangerine', cursive;
+    /* font-family: 'Tangerine', cursive; */
+    font-family: 'Pacifico', cursive;
     font-weight:bolder;
     /* font-size: 75px; */
     /* font-family: 'Macondo', cursive; */
@@ -55,7 +56,7 @@ body
   } */
 
   nav h1 i {
-      margin: -18px;
+      margin: -15px;
   }
 
   /* nav li {
@@ -65,13 +66,15 @@ body
   } */
 
 #restaurant-heading {
-    font-family: 'Tangerine', cursive;
+    /* font-family: 'Tangerine', cursive; */
+    font-family: 'Pacifico', cursive;
     font-size: 85px;
     font-weight: bolder;
 }
 
 #weather-heading {
-    font-family: 'Tangerine', cursive;
+    /* font-family: 'Tangerine', cursive; */
+    font-family: 'Pacifico', cursive;
     font-size: 85px;
     font-weight: bolder;
 }
