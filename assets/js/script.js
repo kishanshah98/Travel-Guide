@@ -45,7 +45,7 @@ $(document).ready(function() {
    function getGeoLocation() {
       var apiKey = "b0786aaf2595b4e2380f01ed8f03a7a4";
       var searchInput = textArea.val().trim();
-      var url = "http://api.openweathermap.org/geo/1.0/direct?q=" + searchInput + "&limit=1&appid=" + apiKey;
+      var url = "https://api.openweathermap.org/geo/1.0/direct?q=" + searchInput + "&limit=1&appid=" + apiKey;
       console.log(searchInput);
       $.ajax({
          url: url,
