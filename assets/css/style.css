@@ -1,6 +1,6 @@
 body
  {
-    /* background-image: url("https://images.unsplash.com/photo-1612528443702-f6741f70a049?ixlib=rb-1.2.1&ixid=MnwxM[…]90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1760&q=80"); */
+    background-image: url("https://images.unsplash.com/photo-1612528443702-f6741f70a049?ixlib=rb-1.2.1&ixid=MnwxM[…]90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1760&q=80");
     background-size: cover;
     background-repeat: no-repeat;
     color: black;
@@ -20,8 +20,9 @@ body
     display: flex;
 }
 
-#restaurants {
+#breweries {
     text-align: center;
+    /* font-size: 30px; */
 }
 
 .restaurant-history, .restaurant-content {
