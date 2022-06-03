@@ -10,7 +10,7 @@ $(document).ready(function() {
             console.log(name);
             // name, phone, address, website
             for (var i = 0; i < response.length; i++) {
-                var brewCard = $("<div>").addClass("card");
+                var brewCard = $("<div>").addClass("brew-card");
                 var brewContent = $("<div>").addClass("card-content");
                 var brewName = $("<p>").text("Brewery: " + response[i].name);
                 
@@ -48,11 +48,11 @@ $(document).ready(function() {
    var deleteBtn = $("#deleteBtn");
    var textArea = $("#textarea1");
    var cityList = $("#city-list");
-   var breweriesDiv = $("#breweries");
+   var breweriesDiv = $("#breweries-container");
    var weatherDiv = $("#weather");
    var weatherContent = $("#weather-content");
    var weatherCard = $("<div>").addClass("card");
-   var title = $("<span>").addClass("card-title");
+   var title = $("<h3>").addClass('weather-title')
    // starting local storage
    var searchHistory = JSON.parse(window.localStorage.getItem("search-history")) || [];
 
@@ -104,7 +104,7 @@ $(document).ready(function() {
            method: "GET"
        }).then(function(response) {
            console.log("Current weather: ", response);
-           weatherCard.append(title);
+           weatherDiv.append(title);
            for (var i = 0; i < 5; i++) {
                 var cardContent = $("<div>").addClass("card-content");
                 var dt = response.daily[i].dt;
@@ -113,6 +113,7 @@ $(document).ready(function() {
                 var temp = $("<p>").text("Temp (F): " + Math.floor(response.daily[i].temp.day));
                 var humidity = $("<p>").text("Humidity: " + Math.floor(response.daily[i].humidity));
                 var windSpeed = $("<p>").text("Wind Speed (MPH): " + Math.floor(response.daily[i].wind_speed));
+                cardContent.attr('style', "border-radius:20px;");
                 cardContent.append(icon, date, temp, humidity, windSpeed);
                 weatherCard.append(cardContent);
                 weatherDiv.append(weatherCard);
