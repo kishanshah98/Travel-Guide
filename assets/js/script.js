@@ -83,7 +83,7 @@ $(document).ready(function () {
                 var cardContent = $("<div>").addClass("card-content");
                 var dt = response.daily[i].dt;
                 var date = $("<p>").text(new Date(dt * 1000).toDateString());
-                var icon = $("<img>").attr("src", "http://openweathermap.org/img/wn/" + response.daily[i].weather[0].icon + ".png");
+                var icon = $("<img>").attr("src", "https://openweathermap.org/img/wn/" + response.daily[i].weather[0].icon + ".png");
                 var temp = $("<p>").text("Temp (F): " + Math.floor(response.daily[i].temp.day));
                 var humidity = $("<p>").text("Humidity: " + Math.floor(response.daily[i].humidity));
                 var windSpeed = $("<p>").text("Wind Speed (MPH): " + Math.floor(response.daily[i].wind_speed));
