@@ -8,7 +8,7 @@ $(document).ready(function() {
             }).then(function(response) {
             console.log("Brews reviews!!!", response);
             console.log(name);
-            // name, phone, address, website
+            // loop through response object to dynamically create cards with brewery data
             for (var i = 0; i < response.length; i++) {
                 var brewCard = $("<div>").addClass("card");
                 var brewContent = $("<div>").addClass("card-content");
@@ -16,18 +16,13 @@ $(document).ready(function() {
                 var brewPhone = $("<p>").text("Phone: " + response[i].phone);
                 var brewAddress = $("<p>").text("Address: " + response[i].street);
                 var brewSite = $("<p>").text("Website: " + response[i].website_url);
-
                 brewContent.append(brewName, brewAddress, brewPhone, brewSite);
                 brewCard.append(brewContent);
                 breweriesDiv.append(brewCard);
             }    
-               
         });
     }
-
-// ==================================================================================================================================================
    // OpenWeather API
-
    // Global variables created
    var searchBtn = $("#searchBtn");
    var deleteBtn = $("#deleteBtn");
@@ -39,13 +34,12 @@ $(document).ready(function() {
    var weatherCard = $("<div>").addClass("card");
    var title = $("<span>").addClass("card-title");
    // starting local storage
-   var searchHistory = JSON.parse(window.localStorage.getItem("search-history")) || [];
-
+   var searchHistory = JSON.parse(window.localStorage.getItem("history")) || [];
    // Retrieves the longitude and latitude required for the getCurrentWeather function
    function getGeoLocation() {
       var apiKey = "b0786aaf2595b4e2380f01ed8f03a7a4";
       var searchInput = textArea.val().trim();
-      var url = "http://api.openweathermap.org/geo/1.0/direct?q=" + searchInput + "&limit=1&appid=" + apiKey;
+      var url = "https://api.openweathermap.org/geo/1.0/direct?q=" + searchInput + "&limit=1&appid=" + apiKey;
       console.log(searchInput);
       $.ajax({
          url: url,
@@ -54,19 +48,9 @@ $(document).ready(function() {
           console.log("Geolocation: ", response);
           var lat = response[0].lat;
           var lon = response[0].lon;
-        //   var weatherIcon = response.current.weather[0].icon;
           console.log(lat, lon);
           var name = response[0].name
           title.text(response[0].name);
-          
-         
-          // temp, humidity, windspeed, icons
-        //   var cardIcon = $("<img>").attr("src", "https://openweathermap.org/img/w/" + response.current.weather[0].icon + ".png");
-        //   weatherCard.append(cardIcon);
-          
-          
-        //   weatherCard.append(cardIcon);
-        
           console.log(name);
           weatherCard.empty();
           weatherDiv.empty();
@@ -79,7 +63,6 @@ $(document).ready(function() {
           historyList();
        });
    }
-
    // Gets the weather forecast using longitude and latitude from getGeoLocation
    function getCurrentWeather(lat, lon, name) {
        var apiKey = "b0786aaf2595b4e2380f01ed8f03a7a4";
@@ -90,6 +73,7 @@ $(document).ready(function() {
        }).then(function(response) {
            console.log("Current weather: ", response);
            weatherCard.append(title);
+           // loop through response object to dynamically create cards with weather data
            for (var i = 0; i < 5; i++) {
                 var cardContent = $("<div>").addClass("card-content");
                 var dt = response.daily[i].dt;
@@ -104,13 +88,12 @@ $(document).ready(function() {
            }
        });
    }
-
+   // function to create history list
    function historyList() {
        var searchInput = textArea.val().trim();
        var button = $("<button>").addClass("btn").text(searchInput);
        cityList.append(button);
    }
-
+   // event listener for search button
    searchBtn.on("click", getGeoLocation);
-   
 });
