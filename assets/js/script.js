@@ -10,6 +10,7 @@ $(document).ready(function () {
     var weatherCard = $("<div>").addClass("card");
     var title = $("<h3>").addClass('weather-title')
 
+    // Retrieves data from the Brewery API and displays it
     function getBrews(name) {
         var queryUrl = "https://api.openbrewerydb.org/breweries?by_city=" + name + "&per_page=5";
         $.ajax({
@@ -94,6 +95,7 @@ $(document).ready(function () {
         });
     }
 
+    // Creates the buttons listed under the city search
     function historyList() {
         cityList.empty();
         var searchHistory = JSON.parse(window.localStorage.getItem("searchHistory")) || [];
@@ -106,6 +108,7 @@ $(document).ready(function () {
         })
     }
 
+    // Stores the searches in local storage
     searchBtn.on("click", function () {
         var searchInput = textArea.val().trim();
         getGeoLocation(searchInput);
@@ -115,6 +118,7 @@ $(document).ready(function () {
         historyList();
     })
 
+    // Clearing the local storage and button list when the delete button is clicked
     deleteBtn.on("click", function () {
         localStorage.clear();
         cityList.empty();
