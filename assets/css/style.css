@@ -1,98 +1,86 @@
-body
- {
-    background-image: url("https://images.unsplash.com/photo-1583908701673-4cb5f290b548?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80");
+
+body {
+    background-image: url("https://images.unsplash.com/photo-1612528443702-f6741f70a049?ixlib=rb-1.2.1&ixid=MnwxM[…]90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1760&q=80");
     background-size: cover;
     background-repeat: no-repeat;
     color: black;
-    /* font-family: 'Abel', sans-serif; */
-    /* font-family: 'Macondo', cursive; */
+    
     font-family: 'Montserrat', sans-serif;
 }
 
-/* footer {
-    color: black;
-}
-#textarea1 {
-    color: white;
-} */
-
-.row {
-    display: flex;
-}
-
-#restaurants {
+#breweries {
     text-align: center;
+   
 }
 
-.restaurant-history, .restaurant-content {
-    /* border: solid lightblue; */
-    /* margin-right: 200px;
-    margin-top: 15px; */
-   width: 100%;
-   /* background-color: #ffffff9d; */
-   /* margin-left: auto;
-   margin-right: auto; */
-   color: #01579b;
+#breweries-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    background-color: transparent;
+    justify-content: center;
 }
 
+.brewery-history,
+.brewery-content {
+    color: #01579b;
+}
 
-
- nav h1 {
+nav h1 {
     display: inline-block;
-    margin: 17px 35px;
-  
-    animation: bounce; /* referring directly to the animation's @keyframe declaration */
+    margin: 15px 35px;
+    animation: bounce;
     animation-duration: 4s;
-    /* color: darkblue; */
-    /* font-family: 'Lobster', cursive; */
-    font-family: 'Tangerine', cursive;
-    font-weight:bolder;
-    /* font-size: 75px; */
-    /* font-family: 'Macondo', cursive; */
-  }
-  /* #nav-container {
-      background-color: ;
-  } */
-
-  nav h1 i {
-      margin: -18px;
-  }
-
-  /* nav li {
-    font-family: 'Tangerine', cursive;
+    font-family: 'Pacifico', cursive;
     font-weight: bolder;
-    font-size: large;
-  } */
+}
 
-#restaurant-heading {
-    font-family: 'Tangerine', cursive;
+nav h1 i {
+    margin: -15px;
+}
+
+#brewery -heading {
+    font-family: 'Pacifico', cursive;
     font-size: 85px;
     font-weight: bolder;
 }
 
 #weather-heading {
-    font-family: 'Tangerine', cursive;
+    font-family: 'Pacifico', cursive;
     font-size: 85px;
     font-weight: bolder;
 }
 
-  .weather-content {
-      text-align: center; 
-      /* background-color: #ffffff9d; */
-      color: #01579b;
-  }
+.weather-content {
+    text-align: center;
+    color: #01579b;
+}
 
 
-  .input-field {
-      width: 300px;
-  }
+.input-field {
+    width: 300px;
+}
 
-  .btn {
-      margin: 5px;
-  }
+.btn {
+    margin: 5px;
+}
 
 .card-title {
     background-color: #cfd8dc9d;
+}
+
+.weather-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 65px;
+    font-weight: bolder;
+}
+
+.brew-card {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    background-color: transparent;
+    justify-content: center;
 }
 
 .card {
@@ -105,13 +93,16 @@ body
 
 .card-content {
     background-color: #cfd8dc9d;
+    margin: 10px;
+    padding: 7px;
+    border-radius: 20px;
+    box-shadow: 5px 10px 4px rgba(73, 72, 72, 0.539);
+   
 }
 
-  footer {
+footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 60px;   /* Height of the footer */
-    /* background:#6cf; */
-    /* color: black; */
- }
+    height: 60px;
+}
